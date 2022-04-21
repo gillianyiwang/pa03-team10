@@ -1,18 +1,29 @@
-<ul>
-    <% for (course of courses){%>
-        <li> 
-            <a href="/schedule/remove/<%= course._id %>">X</a>
-            <%= course['subject'] %>
-            <%= course.coursenum %>
-            <%= course.name %>
-            <%= course.term %>
-            
-        </li>
+
+<h1> Schedule</h1>
+<div class="d-flex flex-wrap">
+<% for (course of courses) {   
+    const inst = course['instructor'];
+    const term = course.term;
+    const sem = term%10;
+    const semester=['none','Spring 2021','Summer 2021','Fall 2020']
+    %>
+
+    <div class="p-3 m-3 bg w-25 border border-warning border-5">
+        <a href="/schedule/remove/<%= course._id %>">X</a>
+        
+        <%= course['subject'] %> <%= course['coursenum'] %> 
+        <%= semester[term%10] %> 
+        <%= course['instructor'] %>
+        <hr>
+        <br>
+        <%= course['name'] %> 
+    </div>
     <% } %>
-</ul>
+</div>
 
 <!--
     <pre>
         <%= JSON.stringify(courses,null,5) %>
     </pre>
 -->
+
