@@ -302,6 +302,21 @@ app.post('/courses/byInst',
   }
 )
 
+app.post('/courses/byName',
+  // show courses taught by a faculty send from a form
+  async (req,res,next) => {
+    const name = req.body.name;
+    const courses = 
+       await Course
+               .find({name:{$regex : name},independent_study:false})
+               .sort({term:1,num:1,section:1})
+    //res.json(courses)
+    res.locals.courses = courses
+    res.locals.times2str = times2str
+    res.render('courselist')
+  }
+)
+
 app.use(isLoggedIn)
 
 app.get('/addCourse/:courseId',
