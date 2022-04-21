@@ -303,7 +303,7 @@ app.post('/courses/byInst',
 )
 
 app.post('/courses/byName',
-  // show courses taught by a faculty send from a form
+  // show courses that contains this keyword
   async (req,res,next) => {
     const name = req.body.name;
     const courses = 
