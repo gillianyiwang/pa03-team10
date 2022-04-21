@@ -7,6 +7,7 @@ const Mixed = Schema.Types.Mixed;
 var courseSchema = Schema( {
     limit: Number,
     times: Mixed,
+    strTimes: [String],
     enrolled: Number,
     details: String,
     type: String,
@@ -25,5 +26,4 @@ var courseSchema = Schema( {
     term: Number,
     description: String,
 } );
-
 module.exports = mongoose.model( 'Course', courseSchema );
