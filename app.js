@@ -240,6 +240,8 @@ app.get('/upsertDB',
       const {subject,coursenum,section,term}=course;
       const num = getNum(coursenum);
       course.num=num
+      const strTimes = time2str(time);
+      course.strTimes = strTimes;
       course.suffix = coursenum.slice(num.length)
       await Course.findOneAndUpdate({subject,coursenum,section,term},course,{upsert:true})
     }
